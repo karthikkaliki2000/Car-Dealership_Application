@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- bean definitions here -->
+    
+    <bean id="normalTyre" class="com.example.CarDealership.NormalTyre"/>
+          <bean id="heavyTyre" class="com.example.CarDealership.HeavyTyres"/>
+             <bean id="sportsTyre" class="com.example.CarDealership.SportsTyres"/>
+             
+             <!--constructor injection-->
+             <bean id="familyCarNormalTyres" class="com.example.CarDealership.FamilyCar">
+				<constructor-arg ref="normalTyre"></constructor-arg>
+			 </bean>
+			 
+			  <bean id="familyCarSportsTyres" class="com.example.CarDealership.FamilyCar">
+				<constructor-arg ref="sportsTyre"></constructor-arg>
+			 </bean>
+   			
+			 <!--setter injection-->
+			<bean id="sportsCarSportsTyres" class="com.example.CarDealership.SportsCar">
+				<property name="tyre" ref="sportsTyre"></property>
+			</bean>
+			
+			<bean id="sportsCarHeavyTyres" class="com.example.CarDealership.SportsCar">
+				<property name="tyre" ref="heavyTyre"></property>
+			</bean>
+			
+			 <!--both constructor and setter injection-->
+    	<bean id="truckHeavyTyres" class="com.example.CarDealership.Truck">
+			<property name="tyre" ref="heavyTyre"></property>
+			
+		</bean>
+		<bean id="truckSportsTyres" class="com.example.CarDealership.Truck">
+			<constructor-arg ref="sportsTyre"></constructor-arg>
+			
+		</bean>
+ 
+      
+      
+      
+       
+
+</beans>
